@@ -118,31 +118,31 @@ def main():
     st.markdown("---")
     st.header("⏱️ Métricas de Eficiencia")
     
-    # Porcentajes de ahorro para cada funcionalidad
+    # Porcentajes de ahorro para cada funcionalidad (conservadores)
     efficiency_percentages = {
-        "app_generation": 91.7,  # porcentaje de ahorro
-        "form_building": 89.2,
-        "icon_creation": 90.0,
-        "code_modification": 84.4
+        "app_generation": 50.0,  # De 1-2 días a medio día
+        "form_building": 40.0,   # Formularios: de 4 horas a 2.4 horas
+        "icon_creation": 60.0,   # Iconos: de 30 min a 12 min
+        "code_modification": 30.0 # Código: de 5 horas a 3.5 horas
     }
     
-    # Proporciones de tiempo entre Builder e IA
+    # Proporciones de tiempo entre Builder e IA (más equilibradas)
     builder_ia_ratio = {
-        "app_generation": {"builder": 0.25, "ia": 0.75},  # 25% Builder, 75% IA
-        "form_building": {"builder": 0.23, "ia": 0.77},
-        "icon_creation": {"builder": 0.17, "ia": 0.83},
-        "code_modification": {"builder": 0.29, "ia": 0.71}
+        "app_generation": {"builder": 0.40, "ia": 0.60},  # 40% Builder, 60% IA
+        "form_building": {"builder": 0.50, "ia": 0.50},   # 50% Builder, 50% IA
+        "icon_creation": {"builder": 0.20, "ia": 0.80},   # 20% Builder, 80% IA
+        "code_modification": {"builder": 0.35, "ia": 0.65} # 35% Builder, 65% IA
     }
     
-    # Valores tradicionales iniciales (pueden ser ajustados por el usuario)
+    # Valores tradicionales iniciales más realistas (pueden ser ajustados por el usuario)
     with st.sidebar:
         st.markdown("---")
         st.subheader("🔄 Ajustar Tiempos Tradicionales")
         traditional_times = {
-            "app_generation": st.slider("Generación de Apps (min)", 60, 480, 240, step=30),
-            "form_building": st.slider("Construcción de Formularios (min)", 30, 240, 120, step=15),
-            "icon_creation": st.slider("Creación de Iconos (min)", 15, 120, 60, step=15),
-            "code_modification": st.slider("Modificación de Código (min)", 60, 360, 180, step=30)
+            "app_generation": st.slider("Generación de Apps (min)", 480, 1440, 720, step=60),  # 8-24 horas, default 12h
+            "form_building": st.slider("Construcción de Formularios (min)", 120, 480, 240, step=30),  # 2-8 horas, default 4h
+            "icon_creation": st.slider("Creación de Iconos (min)", 15, 60, 30, step=5),  # 15-60 min, default 30min
+            "code_modification": st.slider("Modificación de Código (min)", 120, 480, 300, step=30)  # 2-8 horas, default 5h
         }
     
     # Calcular tiempos de Irakani+IA basados en los porcentajes de eficiencia
@@ -277,21 +277,21 @@ def main():
             <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Método Tradicional</p>
-                    <p style="color: #fafafa; font-size: 24px; font-weight: bold; margin: 0;">240 min</p>
-                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">Desarrollo manual</p>
+                    <p style="color: #fafafa; font-size: 24px; font-weight: bold; margin: 0;">12 horas</p>
+                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">1-2 días de desarrollo</p>
                 </div>
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Irakani + IA</p>
-                    <p style="color: #00d4aa; font-size: 24px; font-weight: bold; margin: 0;">20 min</p>
-                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">🛠️ Builder: 5 min + 🤖 IA: 15 min</p>
+                    <p style="color: #00d4aa; font-size: 24px; font-weight: bold; margin: 0;">6 horas</p>
+                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">🛠️ Builder: 2.4h + 🤖 IA: 3.6h</p>
                 </div>
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Ahorro Total</p>
-                    <p style="color: #38a169; font-size: 24px; font-weight: bold; margin: 0;">91.7%</p>
-                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">220 minutos ahorrados</p>
+                    <p style="color: #38a169; font-size: 24px; font-weight: bold; margin: 0;">50%</p>
+                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">6 horas ahorradas</p>
                 </div>
             </div>
-            <p style="color: #fafafa;"><strong>Interpretación:</strong> La generación de aplicaciones con Irakani Builder reduce el tiempo de desarrollo de 4 horas a solo 20 minutos. El proceso se divide en 5 minutos de uso directo del Builder para configurar la aplicación y 15 minutos adicionales de ajustes con asistencia de IA. Esto representa un ahorro del 91.7% del tiempo, permitiendo crear aplicaciones casi 12 veces más rápido que con métodos tradicionales.</p>
+            <p style="color: #fafafa;"><strong>Interpretación:</strong> La generación de aplicaciones con Irakani Builder optimiza el proceso de desarrollo. Lo que tradicionalmente requiere 1-2 días de trabajo (12 horas) se puede completar en 6 horas. El proceso combina 2.4 horas de configuración en el Builder con 3.6 horas de desarrollo asistido por IA, logrando un ahorro del 50% del tiempo.</p>
         </div>
         
         <div style="background: linear-gradient(135deg, #1e2329 0%, #2d3748 100%); padding: 20px; border-radius: 10px; border: 1px solid #4a5568; margin-bottom: 20px;">
@@ -299,21 +299,21 @@ def main():
             <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Método Tradicional</p>
-                    <p style="color: #fafafa; font-size: 24px; font-weight: bold; margin: 0;">60 min</p>
-                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">Diseño manual</p>
+                    <p style="color: #fafafa; font-size: 24px; font-weight: bold; margin: 0;">30 min</p>
+                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">Diseño manual/búsqueda</p>
                 </div>
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Irakani + IA</p>
-                    <p style="color: #00d4aa; font-size: 24px; font-weight: bold; margin: 0;">6 min</p>
-                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">🛠️ Builder: 1 min + 🤖 IA: 5 min</p>
+                    <p style="color: #00d4aa; font-size: 24px; font-weight: bold; margin: 0;">12 min</p>
+                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">🛠️ Builder: 2 min + 🤖 IA: 10 min</p>
                 </div>
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Ahorro Total</p>
-                    <p style="color: #38a169; font-size: 24px; font-weight: bold; margin: 0;">90.0%</p>
-                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">54 minutos ahorrados</p>
+                    <p style="color: #38a169; font-size: 24px; font-weight: bold; margin: 0;">60%</p>
+                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">18 minutos ahorrados</p>
                 </div>
             </div>
-            <p style="color: #fafafa;"><strong>Interpretación:</strong> La creación de iconos con Irakani Builder reduce el tiempo de diseño de 1 hora a solo 6 minutos. El proceso requiere apenas 1 minuto para configurar los parámetros en el Builder y 5 minutos adicionales para ajustes con IA. Esto representa un ahorro del 90% del tiempo, permitiendo crear iconos 10 veces más rápido que con herramientas tradicionales de diseño.</p>
+            <p style="color: #fafafa;"><strong>Interpretación:</strong> La creación de iconos con Irakani Builder acelera el proceso de diseño. Lo que tradicionalmente requiere 30 minutos entre diseño manual o búsqueda de iconos apropiados, se reduce a 12 minutos. El proceso combina 2 minutos de configuración en el Builder con 10 minutos de generación y ajustes con IA, logrando un ahorro del 60% del tiempo.</p>
         </div>
         """, unsafe_allow_html=True)
     
@@ -324,21 +324,21 @@ def main():
             <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Método Tradicional</p>
-                    <p style="color: #fafafa; font-size: 24px; font-weight: bold; margin: 0;">120 min</p>
+                    <p style="color: #fafafa; font-size: 24px; font-weight: bold; margin: 0;">4 horas</p>
                     <p style="color: #a0aec0; font-size: 12px; margin: 0;">Codificación manual</p>
                 </div>
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Irakani + IA</p>
-                    <p style="color: #00d4aa; font-size: 24px; font-weight: bold; margin: 0;">13 min</p>
-                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">🛠️ Builder: 3 min + 🤖 IA: 10 min</p>
+                    <p style="color: #00d4aa; font-size: 24px; font-weight: bold; margin: 0;">2.4 horas</p>
+                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">🛠️ Builder: 72 min + 🤖 IA: 72 min</p>
                 </div>
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Ahorro Total</p>
-                    <p style="color: #38a169; font-size: 24px; font-weight: bold; margin: 0;">89.2%</p>
-                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">107 minutos ahorrados</p>
+                    <p style="color: #38a169; font-size: 24px; font-weight: bold; margin: 0;">40%</p>
+                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">1.6 horas ahorradas</p>
                 </div>
             </div>
-            <p style="color: #fafafa;"><strong>Interpretación:</strong> La construcción de formularios con Irakani Builder reduce el tiempo de desarrollo de 2 horas a solo 13 minutos. El proceso requiere 3 minutos para configurar los campos en el Builder y 10 minutos adicionales para personalizaciones con asistencia de IA. Esto representa un ahorro del 89.2% del tiempo, permitiendo crear formularios complejos aproximadamente 9 veces más rápido que con codificación manual.</p>
+            <p style="color: #fafafa;"><strong>Interpretación:</strong> La construcción de formularios con Irakani Builder mejora el proceso de desarrollo. Lo que tradicionalmente requiere 4 horas de codificación manual se reduce a 2.4 horas. El proceso equilibra 72 minutos de configuración visual en el Builder con 72 minutos de personalización asistida por IA, logrando un ahorro del 40% del tiempo.</p>
         </div>
         
         <div style="background: linear-gradient(135deg, #1e2329 0%, #2d3748 100%); padding: 20px; border-radius: 10px; border: 1px solid #4a5568; margin-bottom: 20px;">
@@ -346,21 +346,21 @@ def main():
             <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Método Tradicional</p>
-                    <p style="color: #fafafa; font-size: 24px; font-weight: bold; margin: 0;">180 min</p>
+                    <p style="color: #fafafa; font-size: 24px; font-weight: bold; margin: 0;">5 horas</p>
                     <p style="color: #a0aec0; font-size: 12px; margin: 0;">Edición manual</p>
                 </div>
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Irakani + IA</p>
-                    <p style="color: #00d4aa; font-size: 24px; font-weight: bold; margin: 0;">28 min</p>
-                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">🛠️ Builder: 8 min + 🤖 IA: 20 min</p>
+                    <p style="color: #00d4aa; font-size: 24px; font-weight: bold; margin: 0;">3.5 horas</p>
+                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">🛠️ Builder: 74 min + 🤖 IA: 136 min</p>
                 </div>
                 <div>
                     <p style="color: #a0aec0; margin: 0;">Ahorro Total</p>
-                    <p style="color: #38a169; font-size: 24px; font-weight: bold; margin: 0;">84.4%</p>
-                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">152 minutos ahorrados</p>
+                    <p style="color: #38a169; font-size: 24px; font-weight: bold; margin: 0;">30%</p>
+                    <p style="color: #a0aec0; font-size: 12px; margin: 0;">1.5 horas ahorradas</p>
                 </div>
             </div>
-            <p style="color: #fafafa;"><strong>Interpretación:</strong> La modificación de código con Irakani Builder reduce el tiempo de desarrollo de 3 horas a solo 28 minutos. El proceso requiere 8 minutos para configurar los cambios en el Builder y 20 minutos adicionales para ajustes con asistencia de IA. Esto representa un ahorro del 84.4% del tiempo, permitiendo realizar modificaciones complejas aproximadamente 6 veces más rápido que con edición manual de código.</p>
+            <p style="color: #fafafa;"><strong>Interpretación:</strong> La modificación de código personalizado con Irakani Builder mejora el proceso de desarrollo. Lo que tradicionalmente requiere 5 horas de edición manual se reduce a 3.5 horas. El proceso combina 74 minutos de configuración en el Builder con 136 minutos de desarrollo asistido por IA, logrando un ahorro del 30% del tiempo manteniendo la calidad del código.</p>
         </div>
     """, unsafe_allow_html=True)
     
@@ -540,10 +540,11 @@ def main():
     total_savings_mxn = traditional_labor_cost_mxn - (irakani_labor_cost_mxn + total_cost_mxn)
     roi = (total_savings_mxn / (irakani_labor_cost_mxn + total_cost_mxn)) * 100 if (irakani_labor_cost_mxn + total_cost_mxn) > 0 else 0
     
-    # Caso de estudio: Ojo Zarco
-    ojo_zarco_traditional_cost = 6 * hourly_rate_mxn  # 6 horas-persona
-    ojo_zarco_irakani_cost = 1 * hourly_rate_mxn     # 1 hora-persona
+    # Caso de estudio: Ojo Zarco (más realista)
+    ojo_zarco_traditional_cost = 6 * hourly_rate_mxn   # 6 horas-persona (2 devs × 3 horas)
+    ojo_zarco_irakani_cost = 3 * hourly_rate_mxn + 50  # 3 horas-persona (1 dev × 3 horas) + 50 MXN IA
     ojo_zarco_savings = ojo_zarco_traditional_cost - ojo_zarco_irakani_cost
+    ojo_zarco_savings_pct = (ojo_zarco_savings / ojo_zarco_traditional_cost) * 100
     
     st.markdown(f"""
     <div style="background: linear-gradient(135deg, #1e2329 0%, #2d3748 100%); padding: 20px; border-radius: 10px; border: 1px solid #4a5568; margin-bottom: 20px;">
@@ -557,15 +558,15 @@ def main():
             <div>
                 <p style="color: #a0aec0; margin: 0;">Con Irakani Builder</p>
                 <p style="color: #00d4aa; font-size: 24px; font-weight: bold; margin: 0;">${ojo_zarco_irakani_cost:.2f} MXN</p>
-                <p style="color: #a0aec0; font-size: 12px; margin: 0;">1 hora-persona × ${hourly_rate_mxn:.0f}/hr</p>
+                <p style="color: #a0aec0; font-size: 12px; margin: 0;">Trabajo: $150 + IA: $50</p>
             </div>
             <div>
                 <p style="color: #a0aec0; margin: 0;">Ahorro Total</p>
                 <p style="color: #38a169; font-size: 24px; font-weight: bold; margin: 0;">${ojo_zarco_savings:.2f} MXN</p>
-                <p style="color: #a0aec0; font-size: 12px; margin: 0;">83% de ahorro</p>
+                <p style="color: #a0aec0; font-size: 12px; margin: 0;">{ojo_zarco_savings_pct:.0f}% de ahorro</p>
             </div>
         </div>
-        <p style="color: #fafafa;"><strong>Caso real:</strong> En la demo de Ojo Zarco, se requirieron 2 desarrolladores invirtiendo 3 horas cada uno (total: 6 horas-persona = ${ojo_zarco_traditional_cost:.2f} MXN) para crear 2 aplicaciones de captura de información. Con Irakani Builder, la misma tarea habría requerido solo 1 desarrollador trabajando durante 1 hora (${ojo_zarco_irakani_cost:.2f} MXN), representando un ahorro de ${ojo_zarco_savings:.2f} MXN (83% menos costo) y una reducción del 50% en personal necesario.</p>
+        <p style="color: #fafafa;"><strong>Caso real:</strong> En la demo de Ojo Zarco, se requirieron 2 desarrolladores invirtiendo 3 horas cada uno (total: 6 horas-persona = ${ojo_zarco_traditional_cost:.2f} MXN) para crear 2 aplicaciones de captura de información. Con Irakani Builder, la misma tarea habría requerido solo 1 desarrollador trabajando durante 3 horas más $50 MXN en costos de IA (${ojo_zarco_irakani_cost:.2f} MXN total), representando un ahorro de ${ojo_zarco_savings:.2f} MXN ({ojo_zarco_savings_pct:.0f}% menos costo) y una reducción del 50% en personal necesario.</p>
     </div>
     
     ### Explicación del análisis costo-beneficio
@@ -589,7 +590,7 @@ def main():
                 <p style="color: #a0aec0; font-size: 12px; margin: 0;">ROI: {roi:.1f}%</p>
             </div>
         </div>
-        <p style="color: #fafafa;"><strong>Interpretación:</strong> El análisis costo-beneficio muestra que Irakani Builder reduce drásticamente los costos de desarrollo. Para un proyecto que tradicionalmente costaría ${traditional_labor_cost_mxn:.2f} MXN ({traditional_hours:.1f} horas a ${hourly_rate_mxn:.0f} MXN/hr), con Irakani + IA el costo se reduce a solo ${irakani_labor_cost_mxn + total_cost_mxn:.2f} MXN ({irakani_hours:.1f} horas de trabajo más el costo de la IA). Esto representa un ahorro de ${total_savings_mxn:.2f} MXN, equivalente a un ROI del {roi:.1f}%. En términos de tiempo, se ahorran {(traditional_hours - irakani_hours):.1f} horas, lo que significa un {((traditional_hours - irakani_hours) / traditional_hours * 100):.1f}% de mejora en eficiencia.</p>
+        <p style="color: #fafafa;"><strong>Interpretación:</strong> El análisis costo-beneficio muestra que Irakani Builder reduce drásticamente los costos de desarrollo. Para una aplicación que tradicionalmente costaría ${traditional_labor_cost_mxn:.2f} MXN ({traditional_hours:.1f} horas a ${hourly_rate_mxn:.0f} MXN/hr), con Irakani + IA el costo se reduce a solo ${irakani_labor_cost_mxn + total_cost_mxn:.2f} MXN ({irakani_hours:.1f} horas de trabajo más el costo de la IA). Esto representa un ahorro de ${total_savings_mxn:.2f} MXN, equivalente a un ROI del {roi:.1f}%. En términos de tiempo, se ahorran {(traditional_hours - irakani_hours):.1f} horas, lo que significa un {((traditional_hours - irakani_hours) / traditional_hours * 100):.1f}% de mejora en eficiencia.</p>
     </div>
     """, unsafe_allow_html=True)
     
